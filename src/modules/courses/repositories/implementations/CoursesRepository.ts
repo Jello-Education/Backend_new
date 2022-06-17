@@ -1,11 +1,20 @@
-import { Course } from "../model/Course";
-import { ICoursesRepository, ICreateCoursesDTO } from "./ICoursesRepository";
+import { Course } from "../../model/Course";
+import { ICoursesRepository, ICreateCoursesDTO } from "../ICoursesRepository";
 
 class CoursesRepository implements ICoursesRepository {
   private courses: Course[];
 
-  constructor() {
+  private static INSTANCE: CoursesRepository;
+
+  private constructor() {
     this.courses = [];
+  }
+
+  public static getInstance(): CoursesRepository {
+    if (!CoursesRepository.INSTANCE) {
+      CoursesRepository.INSTANCE = new CoursesRepository();
+    }
+    return CoursesRepository.INSTANCE;
   }
 
   create({

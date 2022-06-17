@@ -1,4 +1,4 @@
-import { ICoursesRepository } from "../repositories/ICoursesRepository";
+import { ICoursesRepository } from "../../repositories/ICoursesRepository";
 
 interface IRequest {
   name: string;
@@ -9,7 +9,7 @@ interface IRequest {
   classification: string;
 }
 
-class CreateCoursesService {
+class CreateCoursesUseCase {
   constructor(private coursesRepository: ICoursesRepository) {}
 
   execute({
@@ -31,4 +31,4 @@ class CreateCoursesService {
   }
 }
 
-export { CreateCoursesService };
+export { CreateCoursesUseCase };

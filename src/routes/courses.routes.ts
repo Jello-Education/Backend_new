@@ -1,34 +1,16 @@
 import { Router } from "express";
 
-import { CoursesRepository } from "../repositories/CoursesRepository";
-import { CreateCoursesService } from "../services/CreateCoursesService";
+import { createCourseController } from "../modules/courses/useCases/createCourse";
+import { listCourseController } from "../modules/courses/useCases/listCourses";
 
 const coursesRoutes = Router();
 
-const coursesRepository = new CoursesRepository();
-
 coursesRoutes.post("/", (request, response) => {
-  const { name, description, author, url, isPremium, classification } =
-    request.body;
-
-  const createCoursesService = new CreateCoursesService(coursesRepository);
-
-  createCoursesService.execute({
-    name,
-    description,
-    author,
-    url,
-    isPremium,
-    classification,
-  });
-
-  return response.status(201).send();
+  return createCourseController.handle(request, response);
 });
 
 coursesRoutes.get("/", (request, response) => {
-  const all = coursesRepository.list();
-
-  return response.json(all);
+  return listCourseController.handle(request, response);
 });
 
 export { coursesRoutes };
