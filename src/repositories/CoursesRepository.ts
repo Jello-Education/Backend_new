@@ -1,15 +1,7 @@
 import { Course } from "../model/Course";
+import { ICoursesRepository, ICreateCoursesDTO } from "./ICoursesRepository";
 
-interface ICreateCoursesDTO {
-  name: string;
-  description: string;
-  author: string;
-  url: string;
-  isPremium: boolean;
-  classification: string;
-}
-
-class CoursesRepository {
+class CoursesRepository implements ICoursesRepository {
   private courses: Course[];
 
   constructor() {

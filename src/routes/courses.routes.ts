@@ -1,6 +1,7 @@
 import { Router } from "express";
 
 import { CoursesRepository } from "../repositories/CoursesRepository";
+import { CreateCoursesService } from "../services/CreateCoursesService";
 
 const coursesRoutes = Router();
 
@@ -10,7 +11,9 @@ coursesRoutes.post("/", (request, response) => {
   const { name, description, author, url, isPremium, classification } =
     request.body;
 
-  coursesRepository.create({
+  const createCoursesService = new CreateCoursesService(coursesRepository);
+
+  createCoursesService.execute({
     name,
     description,
     author,
