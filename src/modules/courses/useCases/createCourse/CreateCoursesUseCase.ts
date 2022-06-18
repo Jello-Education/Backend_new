@@ -1,3 +1,5 @@
+import { inject, injectable } from "tsyringe";
+
 import { ICoursesRepository } from "../../repositories/ICoursesRepository";
 
 interface IRequest {
@@ -9,8 +11,12 @@ interface IRequest {
   classification: string;
 }
 
+@injectable()
 class CreateCoursesUseCase {
-  constructor(private coursesRepository: ICoursesRepository) {}
+  constructor(
+    @inject("CoursesRepository")
+    private coursesRepository: ICoursesRepository
+  ) {}
 
   execute({
     name,

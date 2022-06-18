@@ -1,15 +1,16 @@
 import { Request, Response } from "express";
+import { container } from "tsyringe";
 
 import { CreateCoursesUseCase } from "./CreateCoursesUseCase";
 
 class CreateCourseController {
-  constructor(private createCoursesUseCase: CreateCoursesUseCase) {}
-
   handle(request: Request, response: Response): Response {
     const { name, description, author, url, isPremium, classification } =
       request.body;
 
-    this.createCoursesUseCase.execute({
+    const createCoursesUseCase = container.resolve(CreateCoursesUseCase);
+
+    createCoursesUseCase.execute({
       name,
       description,
       author,
