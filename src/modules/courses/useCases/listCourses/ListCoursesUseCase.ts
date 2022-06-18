@@ -1,4 +1,4 @@
-import { Course } from "../../model/Course";
+import { Course } from "../../entities/Course";
 import { ICoursesRepository } from "../../repositories/ICoursesRepository";
 
 class ListCoursesUseCase {

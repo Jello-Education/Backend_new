@@ -1,4 +1,4 @@
-import { Course } from "../model/Course";
+import { Course } from "../entities/Course";
 
 interface ICreateCoursesDTO {
   name: string;
@@ -10,7 +10,7 @@ interface ICreateCoursesDTO {
 }
 
 interface ICoursesRepository {
-  list(): Course[];
+  list(): Promise<Course[]>;
   create({
     name,
     description,
@@ -18,7 +18,7 @@ interface ICoursesRepository {
     url,
     isPremium,
     classification,
-  }: ICreateCoursesDTO): void;
+  }: ICreateCoursesDTO): Promise<void>;
 }
 
 export { ICoursesRepository, ICreateCoursesDTO };

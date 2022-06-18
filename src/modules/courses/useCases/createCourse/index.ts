@@ -2,10 +2,14 @@ import { CoursesRepository } from "../../repositories/implementations/CoursesRep
 import { CreateCourseController } from "./CreateCourseController";
 import { CreateCoursesUseCase } from "./CreateCoursesUseCase";
 
-const coursesRepository = CoursesRepository.getInstance();
+export default (): CreateCourseController => {
+  const coursesRepository = new CoursesRepository();
 
-const createCoursesUseCase = new CreateCoursesUseCase(coursesRepository);
+  const createCoursesUseCase = new CreateCoursesUseCase(coursesRepository);
 
-const createCourseController = new CreateCourseController(createCoursesUseCase);
+  const createCourseController = new CreateCourseController(
+    createCoursesUseCase
+  );
 
-export { createCourseController };
+  return createCourseController;
+};
