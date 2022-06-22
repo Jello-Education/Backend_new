@@ -1,7 +1,7 @@
 interface ICreateStudentUsersDTO {
   name: string;
-  social_name: string;
-  telephone?: number;
+  socialName: string;
+  telephone: string;
   password: string;
   email: string;
 }

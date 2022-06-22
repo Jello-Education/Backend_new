@@ -1,7 +1,7 @@
 import { Column, CreateDateColumn, Entity, PrimaryColumn } from "typeorm";
 import { v4 as uuidV4 } from "uuid";
 
-@Entity("studentUser")
+@Entity("studentUsers")
 class StudentUser {
   @PrimaryColumn()
   id: string;
@@ -10,13 +10,13 @@ class StudentUser {
   name: string;
 
   @Column()
-  social_name: string;
+  socialName: string;
 
   @Column()
   telephone: string;
 
   @Column()
-  password: number;
+  password: string;
 
   @Column()
   email: string;

@@ -13,14 +13,14 @@ class StudentUsersRepository implements IStudentUserRepository {
 
   async create({
     name,
-    social_name,
+    socialName,
     telephone,
     password,
     email,
   }: ICreateStudentUsersDTO): Promise<void> {
     const user = this.repository.create({
       name,
-      social_name,
+      socialName,
       telephone,
       email,
       password,

@@ -12,14 +12,14 @@ class CreateStudentUserUseCase {
 
   async execute({
     name,
-    social_name,
+    socialName,
     email,
     password,
     telephone,
   }: ICreateStudentUsersDTO): Promise<void> {
     await this.studentUsersRepository.create({
       name,
-      social_name,
+      socialName,
       email,
       password,
       telephone,

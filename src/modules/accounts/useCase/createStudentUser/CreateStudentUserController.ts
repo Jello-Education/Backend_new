@@ -5,7 +5,7 @@ import { CreateStudentUserUseCase } from "./CreateStudentUserUseCase";
 
 class CreateStudentUserController {
   async handle(request: Request, response: Response): Promise<Response> {
-    const { name, social_name, email, telephone, password } = request.body;
+    const { name, socialName, email, telephone, password } = request.body;
 
     const createStudentUserUseCase = container.resolve(
       CreateStudentUserUseCase
@@ -13,7 +13,7 @@ class CreateStudentUserController {
 
     await createStudentUserUseCase.execute({
       name,
-      social_name,
+      socialName,
       email,
       telephone,
       password,
